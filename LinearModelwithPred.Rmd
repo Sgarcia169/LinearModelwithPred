@@ -15,7 +15,7 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ```
 
 
-# Model1
+# Model 1
 
 Find an equation that expresses SIMS as a function of ARM.
 
@@ -50,7 +50,12 @@ plot(SIMS~ARM,data=data)
 abline(Model1, col = "red")
 ```
 
-The red line through the data shows the best linear fir when predicting SIM with a function of arm strength. For an increase in 1 in arm strength, sim score increases by 0.05 indicated on the line. 
+The red line through the data shows the best linear fir when predicting SIM with a function of arm strength. For an increase in 1 in arm strength, sim score increases by 0.05 indicated on the line.
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(Model1, newdata, interval = "prediction")
+```
 
 # Model 2
 
@@ -87,5 +92,39 @@ abline(Model1, col = "blue")
 ```
 
 The blue line through the data shows the best linear form when predicting SIM with a function of GRIP strength. For an increase in 1 in GRIP strength, SIM score increases by 0.045 indicated on the line.
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(Model1, newdata, interval = "prediction")
+```
+
+
+# Model 3
+
+Find an equation that expresses SIMS as a function of ARM~GRIP.
+
+## Results
+
+## Graphical Results
+
+There are no graphical results for model 3 because I can't put 2 variables on one axis. 
+
+
+## Numerical Results
+
+There are no numerical results since we have SIM as a function of two variables. 
+
+## Inference 
+
+```{r}
+Model3 = lm(SIMS~ARM+GRIP, data = data)
+print(summary(Model3))
+```
+
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP = 94)
+predict.lm(Model3, newdata, interval = "prediction")
+```
 
 
