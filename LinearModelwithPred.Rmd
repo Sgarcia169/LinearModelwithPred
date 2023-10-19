@@ -15,7 +15,8 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ```
 
 
-## Model1
+# Model1
+
 Find an equation that expresses SIMS as a function of ARM.
 
 ## Results
@@ -51,12 +52,40 @@ abline(Model1, col = "red")
 
 The red line through the data shows the best linear fir when predicting SIM with a function of arm strength. For an increase in 1 in arm strength, sim score increases by 0.05 indicated on the line. 
 
-## Model 2
+# Model 2
+
+Find an equation that expresses SIMS as a function of GRIP.
 
 ## Results
 
 ## Graphical Results
 
+```{r}
+plot(SIMS~GRIP,data=data)
+```
+
+As GRIP strength increases, the SIM score increases. There is a positive trend between GRIP strength and SIM score. 
+
 ## Numerical Results
 
+```{r}
+cor(data$SIMS, data$GRIP)
+```
+
+We have a positive correlation that is scattered. 
+
 ## Inference
+
+```{r}
+Model1 = lm(SIMS~GRIP, data = data)
+print(summary(Model1))
+```
+
+```{r}
+plot(SIMS~GRIP,data=data)
+abline(Model1, col = "blue")
+```
+
+The blue line through the data shows the best linear form when predicting SIM with a function of GRIP strength. For an increase in 1 in GRIP strength, SIM score increases by 0.045 indicated on the line.
+
+
